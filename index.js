@@ -1,4 +1,4 @@
-ï»¿const express = require("express");
+const express = require("express");
 const app = express();
 const axios = require("axios");
 const os = require('os');
@@ -8,36 +8,36 @@ const { promisify } = require('util');
 const exec = promisify(require('child_process').exec);
 const { execSync } = require('child_process');
 
-// åªå¡«å†™UPLOAD_URLå°†ä¸Šä¼ èŠ‚ç‚¹,åŒæ—¶å¡«å†™UPLOAD_URLå’ŒPROJECT_URLå°†ä¸Šä¼ è®¢é˜…
-const UPLOAD_URL = process.env.UPLOAD_URL || '';      // èŠ‚ç‚¹æˆ–è®¢é˜…è‡ªåŠ¨ä¸Šä¼ åœ°å€,éœ€å¡«å†™éƒ¨ç½²Merge-subé¡¹ç›®åŽçš„é¦–é¡µåœ°å€,ä¾‹å¦‚ï¼šhttps://merge.xxx.com
-const PROJECT_URL = process.env.PROJECT_URL || '';    // éœ€è¦ä¸Šä¼ è®¢é˜…æˆ–ä¿æ´»æ—¶éœ€å¡«å†™é¡¹ç›®åˆ†é…çš„url,ä¾‹å¦‚ï¼šhttps://google.com
-const AUTO_ACCESS = process.env.AUTO_ACCESS || false; // falseå…³é—­è‡ªåŠ¨ä¿æ´»ï¼Œtrueå¼€å¯,éœ€åŒæ—¶å¡«å†™PROJECT_URLå˜é‡
-const FILE_PATH = process.env.FILE_PATH || './tmp';   // è¿è¡Œç›®å½•,subèŠ‚ç‚¹æ–‡ä»¶ä¿å­˜ç›®å½•
-const SUB_PATH = process.env.SUB_PATH || 'sub';       // è®¢é˜…è·¯å¾„
-const PORT = process.env.SERVER_PORT || process.env.PORT || 3000;        // httpæœåŠ¡è®¢é˜…ç«¯å£
-const UUID = process.env.UUID || 'eb6cb84e-4b25-4cd8-bbcf-b78b8c4993e6'; // UUIDï¼Œæœªè®¾ç½®æ—¶ä½¿ç”¨é»˜è®¤å€¼
-// === Komari ç›‘æŽ§é…ç½®ï¼ˆæ›¿æ¢å“ªå’ï¼‰ ===
-const KOMARI_ENDPOINT = process.env.KOMARI_ENDPOINT || '';  // Komariç›‘æŽ§ç«¯ç‚¹ï¼Œä¾‹å¦‚ï¼šhttps://km.example.com
-const KOMARI_TOKEN = process.env.KOMARI_TOKEN || '';        // Komariè®¿é—®ä»¤ç‰Œ
-const NEZHA_SERVER = process.env.NEZHA_SERVER || '';        // å“ªå’v1å¡«å†™å½¢å¼: nz.abc.com:8008  å“ªå’v0å¡«å†™å½¢å¼ï¼šnz.abc.com
-const NEZHA_PORT = process.env.NEZHA_PORT || '';            // ä½¿ç”¨å“ªå’v1è¯·ç•™ç©ºï¼Œå“ªå’v0éœ€å¡«å†™
-const NEZHA_KEY = process.env.NEZHA_KEY || '';              // å“ªå’v1çš„NZ_CLIENT_SECRETæˆ–å“ªå’v0çš„agentå¯†é’¥
-const ARGO_DOMAIN = process.env.ARGO_DOMAIN || '';          // å›ºå®šéš§é“åŸŸå,ç•™ç©ºå³å¯ç”¨ä¸´æ—¶éš§é“
-const ARGO_AUTH = process.env.ARGO_AUTH || '';              // å›ºå®šéš§é“å¯†é’¥jsonæˆ–token,ç•™ç©ºå³å¯ç”¨ä¸´æ—¶éš§é“,jsonèŽ·å–åœ°å€ï¼šhttps://json.zone.id
-const ARGO_PORT = process.env.ARGO_PORT || 8001;            // å›ºå®šéš§é“ç«¯å£,ä½¿ç”¨tokenéœ€åœ¨cloudflareåŽå°è®¾ç½®å’Œè¿™é‡Œä¸€è‡´
-const CFIP = process.env.CFIP || 'cdns.doon.eu.org';        // èŠ‚ç‚¹ä¼˜é€‰åŸŸåæˆ–ä¼˜é€‰ip  
-const CFPORT = process.env.CFPORT || 443;                   // èŠ‚ç‚¹ä¼˜é€‰åŸŸåæˆ–ä¼˜é€‰ipå¯¹åº”çš„ç«¯å£
-const NAME = process.env.NAME || '';                        // èŠ‚ç‚¹åç§°
+// Ö»ÌîÐ´UPLOAD_URL½«ÉÏ´«½Úµã,Í¬Ê±ÌîÐ´UPLOAD_URLºÍPROJECT_URL½«ÉÏ´«¶©ÔÄ
+const UPLOAD_URL = process.env.UPLOAD_URL || '';      // ½Úµã»ò¶©ÔÄ×Ô¶¯ÉÏ´«µØÖ·,ÐèÌîÐ´²¿ÊðMerge-subÏîÄ¿ºóµÄÊ×Ò³µØÖ·,ÀýÈç£ºhttps://merge.xxx.com
+const PROJECT_URL = process.env.PROJECT_URL || '';    // ÐèÒªÉÏ´«¶©ÔÄ»ò±£»îÊ±ÐèÌîÐ´ÏîÄ¿·ÖÅäµÄurl,ÀýÈç£ºhttps://google.com
+const AUTO_ACCESS = process.env.AUTO_ACCESS || false; // false¹Ø±Õ×Ô¶¯±£»î£¬true¿ªÆô,ÐèÍ¬Ê±ÌîÐ´PROJECT_URL±äÁ¿
+const FILE_PATH = process.env.FILE_PATH || './tmp';   // ÔËÐÐÄ¿Â¼,sub½ÚµãÎÄ¼þ±£´æÄ¿Â¼
+const SUB_PATH = process.env.SUB_PATH || 'sub';       // ¶©ÔÄÂ·¾¶
+const PORT = process.env.SERVER_PORT || process.env.PORT || 3000;        // http·þÎñ¶©ÔÄ¶Ë¿Ú
+const UUID = process.env.UUID || 'eb6cb84e-4b25-4cd8-bbcf-b78b8c4993e6'; // UUID£¬Î´ÉèÖÃÊ±Ê¹ÓÃÄ¬ÈÏÖµ
+// === Komari ¼à¿ØÅäÖÃ£¨Ìæ»»ÄÄß¸£© ===
+const KOMARI_ENDPOINT = process.env.KOMARI_ENDPOINT || '';  // Komari¼à¿Ø¶Ëµã£¬ÀýÈç£ºhttps://km.example.com
+const KOMARI_TOKEN = process.env.KOMARI_TOKEN || '';        // Komari·ÃÎÊÁîÅÆ
+const NEZHA_SERVER = process.env.NEZHA_SERVER || '';        // ÄÄß¸v1ÌîÐ´ÐÎÊ½: nz.abc.com:8008  ÄÄß¸v0ÌîÐ´ÐÎÊ½£ºnz.abc.com
+const NEZHA_PORT = process.env.NEZHA_PORT || '';            // Ê¹ÓÃÄÄß¸v1ÇëÁô¿Õ£¬ÄÄß¸v0ÐèÌîÐ´
+const NEZHA_KEY = process.env.NEZHA_KEY || '';              // ÄÄß¸v1µÄNZ_CLIENT_SECRET»òÄÄß¸v0µÄagentÃÜÔ¿
+const ARGO_DOMAIN = process.env.ARGO_DOMAIN || '';          // ¹Ì¶¨ËíµÀÓòÃû,Áô¿Õ¼´ÆôÓÃÁÙÊ±ËíµÀ
+const ARGO_AUTH = process.env.ARGO_AUTH || '';              // ¹Ì¶¨ËíµÀÃÜÔ¿json»òtoken,Áô¿Õ¼´ÆôÓÃÁÙÊ±ËíµÀ,json»ñÈ¡µØÖ·£ºhttps://json.zone.id
+const ARGO_PORT = process.env.ARGO_PORT || 8001;            // ¹Ì¶¨ËíµÀ¶Ë¿Ú,Ê¹ÓÃtokenÐèÔÚcloudflareºóÌ¨ÉèÖÃºÍÕâÀïÒ»ÖÂ
+const CFIP = process.env.CFIP || 'cdns.doon.eu.org';        // ½ÚµãÓÅÑ¡ÓòÃû»òÓÅÑ¡ip  
+const CFPORT = process.env.CFPORT || 443;                   // ½ÚµãÓÅÑ¡ÓòÃû»òÓÅÑ¡ip¶ÔÓ¦µÄ¶Ë¿Ú
+const NAME = process.env.NAME || '';                        // ½ÚµãÃû³Æ
 
-// åˆ›å»ºè¿è¡Œæ–‡ä»¶å¤¹
+// ´´½¨ÔËÐÐÎÄ¼þ¼Ð
 if (!fs.existsSync(FILE_PATH)) {
   fs.mkdirSync(FILE_PATH);
-  console.log(`${FILE_PATH} is created`);
+  // Silent mode
 } else {
-  console.log(`${FILE_PATH} already exists`);
+  // Silent mode
 }
 
-// ç”Ÿæˆéšæœº6ä½å­—ç¬¦æ–‡ä»¶å
+// Éú³ÉËæ»ú6Î»×Ö·ûÎÄ¼þÃû
 function generateRandomName() {
   const characters = 'abcdefghijklmnopqrstuvwxyz';
   let result = '';
@@ -47,7 +47,7 @@ function generateRandomName() {
   return result;
 }
 
-// å…¨å±€å¸¸é‡
+// È«¾Ö³£Á¿
 const komariName = generateRandomName();
 const npmName = generateRandomName();
 const webName = generateRandomName();
@@ -63,7 +63,7 @@ let listPath = path.join(FILE_PATH, 'list.txt');
 let bootLogPath = path.join(FILE_PATH, 'boot.log');
 let configPath = path.join(FILE_PATH, 'config.json');
 
-// å¦‚æžœè®¢é˜…å™¨ä¸Šå­˜åœ¨åŽ†å²è¿è¡ŒèŠ‚ç‚¹åˆ™å…ˆåˆ é™¤
+// Èç¹û¶©ÔÄÆ÷ÉÏ´æÔÚÀúÊ·ÔËÐÐ½ÚµãÔòÏÈÉ¾³ý
 function deleteNodes() {
   try {
     if (!UPLOAD_URL) return;
@@ -95,7 +95,7 @@ function deleteNodes() {
   }
 }
 
-// æ¸…ç†åŽ†å²æ–‡ä»¶
+// ÇåÀíÀúÊ·ÎÄ¼þ
 function cleanupOldFiles() {
   try {
     const files = fs.readdirSync(FILE_PATH);
@@ -107,23 +107,23 @@ function cleanupOldFiles() {
           fs.unlinkSync(filePath);
         }
       } catch (err) {
-        // å¿½ç•¥æ‰€æœ‰é”™è¯¯ï¼Œä¸è®°å½•æ—¥å¿—
+        // ºöÂÔËùÓÐ´íÎó£¬²»¼ÇÂ¼ÈÕÖ¾
       }
     });
   } catch (err) {
-    // å¿½ç•¥æ‰€æœ‰é”™è¯¯ï¼Œä¸è®°å½•æ—¥å¿—
+    // ºöÂÔËùÓÐ´íÎó£¬²»¼ÇÂ¼ÈÕÖ¾
   }
 }
 
-// === é…ç½®é™æ€æ–‡ä»¶æœåŠ¡ ===
+// === ÅäÖÃ¾²Ì¬ÎÄ¼þ·þÎñ ===
 app.use(express.static(path.join(__dirname, 'public')));
 
-// æ ¹è·¯ç”± - æä¾›å¯¼èˆªé¡µé¢
+// ¸ùÂ·ÓÉ - Ìá¹©µ¼º½Ò³Ãæ
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// ç”Ÿæˆxr-ayé…ç½®æ–‡ä»¶
+// Éú³Éxr-ayÅäÖÃÎÄ¼þ
 async function generateConfig() {
   const config = {
     log: { access: '/dev/null', error: '/dev/null', loglevel: 'none' },
@@ -140,7 +140,7 @@ async function generateConfig() {
   fs.writeFileSync(path.join(FILE_PATH, 'config.json'), JSON.stringify(config, null, 2));
 }
 
-// åˆ¤æ–­ç³»ç»Ÿæž¶æž„
+// ÅÐ¶ÏÏµÍ³¼Ü¹¹
 function getSystemArchitecture() {
   const arch = os.arch();
   if (arch === 'arm' || arch === 'arm64' || arch === 'aarch64') {
@@ -150,11 +150,11 @@ function getSystemArchitecture() {
   }
 }
 
-// ä¸‹è½½å¯¹åº”ç³»ç»Ÿæž¶æž„çš„ä¾èµ–æ–‡ä»¶
+// ÏÂÔØ¶ÔÓ¦ÏµÍ³¼Ü¹¹µÄÒÀÀµÎÄ¼þ
 function downloadFile(fileName, fileUrl, callback) {
   const filePath = fileName;
 
-  // ç¡®ä¿ç›®å½•å­˜åœ¨
+  // È·±£Ä¿Â¼´æÔÚ
   if (!fs.existsSync(FILE_PATH)) {
     fs.mkdirSync(FILE_PATH, { recursive: true });
   }
@@ -171,32 +171,32 @@ function downloadFile(fileName, fileUrl, callback) {
 
       writer.on('finish', () => {
         writer.close();
-        console.log(`âœ… Downloaded ${path.basename(filePath)} successfully`);
+        // Silent mode} successfully`);
         callback(null, filePath);
       });
 
       writer.on('error', err => {
         fs.unlink(filePath, () => { });
         const errorMessage = `Download ${path.basename(filePath)} failed: ${err.message}`;
-        console.error(errorMessage);
+        // Silent mode
         callback(errorMessage);
       });
     })
     .catch(err => {
       const errorMessage = `Download ${path.basename(filePath)} failed: ${err.message}`;
-      console.error(errorMessage);
+      // Silent mode
       callback(errorMessage);
     });
 }
 
-// ä¸‹è½½å¹¶è¿è¡Œä¾èµ–æ–‡ä»¶
+// ÏÂÔØ²¢ÔËÐÐÒÀÀµÎÄ¼þ
 async function downloadFilesAndRun() {
 
   const architecture = getSystemArchitecture();
   const filesToDownload = getFilesForArchitecture(architecture);
 
   if (filesToDownload.length === 0) {
-    console.log(`Can't find a file for the current architecture`);
+    // Silent mode
     return;
   }
 
@@ -214,13 +214,13 @@ async function downloadFilesAndRun() {
 
   try {
     await Promise.all(downloadPromises);
-    console.log('âœ… All files downloaded successfully');
+    // Silent mode
   } catch (err) {
-    console.error('Error downloading files:', err);
+    // Silent mode
     return;
   }
 
-  // æŽˆæƒå’Œè¿è¡Œ
+  // ÊÚÈ¨ºÍÔËÐÐ
   function authorizeFiles(filePaths) {
     const newPermissions = 0o775;
     filePaths.forEach(absoluteFilePath => {
@@ -229,7 +229,7 @@ async function downloadFilesAndRun() {
       }
     });
   }
-  // === Komari/å“ªå’æŽˆæƒæ–‡ä»¶åˆ—è¡¨ ===
+  // === Komari/ÄÄß¸ÊÚÈ¨ÎÄ¼þÁÐ±í ===
   let filesToAuthorize;
   if (KOMARI_ENDPOINT && KOMARI_TOKEN) {
     filesToAuthorize = [komariPath, webPath, botPath];
@@ -240,23 +240,23 @@ async function downloadFilesAndRun() {
   }
   authorizeFiles(filesToAuthorize);
 
-  // =======è¿è¡ŒKomari Agent (æ›¿æ¢å“ªå’) ===
+  // =======ÔËÐÐKomari Agent (Ìæ»»ÄÄß¸) ===
   if (KOMARI_ENDPOINT && KOMARI_TOKEN) {
     const command = `nohup ${komariPath} -e ${KOMARI_ENDPOINT} -t ${KOMARI_TOKEN} >/dev/null 2>&1 &`;
     try {
       await exec(command);
-      console.log(' Komari agent is running');
+      // Silent mode
       await new Promise((resolve) => setTimeout(resolve, 1000));
     } catch (error) {
-      console.error(' Komari running error:', error.message);
+      // Silent mode
     }
   } else if (NEZHA_SERVER && NEZHA_KEY) {
     if (!NEZHA_PORT) {
-      // æ£€æµ‹å“ªå’æ˜¯å¦å¼€å¯TLS
+      // ¼ì²âÄÄß¸ÊÇ·ñ¿ªÆôTLS
       const port = NEZHA_SERVER.includes(':') ? NEZHA_SERVER.split(':').pop() : '';
       const tlsPorts = new Set(['443', '8443', '2096', '2087', '2083', '2053']);
       const nezhatls = tlsPorts.has(port) ? 'true' : 'false';
-      // ç”Ÿæˆ config.yaml
+      // Éú³É config.yaml
       const configYaml = `
 client_secret: ${NEZHA_KEY}
 debug: false
@@ -280,14 +280,14 @@ uuid: ${UUID}`;
 
       fs.writeFileSync(path.join(FILE_PATH, 'config.yaml'), configYaml);
 
-      // è¿è¡Œ v1
+      // ÔËÐÐ v1
       const command = `nohup ${phpPath} -c "${FILE_PATH}/config.yaml" >/dev/null 2>&1 &`;
       try {
         await exec(command);
-        console.log(`âœ… Nezha agent is running`);
+        // Silent mode
         await new Promise((resolve) => setTimeout(resolve, 1000));
       } catch (error) {
-        console.error(`âŒ Nezha running error: ${error}`);
+        // Silent mode
       }
     } else {
       let NEZHA_TLS = '';
@@ -298,25 +298,25 @@ uuid: ${UUID}`;
       const command = `nohup ${npmPath} -s ${NEZHA_SERVER}:${NEZHA_PORT} -p ${NEZHA_KEY} ${NEZHA_TLS} --disable-auto-update --report-delay 4 --skip-conn --skip-procs >/dev/null 2>&1 &`;
       try {
         await exec(command);
-        console.log(`âœ… Nezha agent is running`);
+        // Silent mode
         await new Promise((resolve) => setTimeout(resolve, 1000));
       } catch (error) {
-        console.error(`âŒ Nezha running error: ${error}`);
+        // Silent mode
       }
     }
   }
 
-  //è¿è¡Œxr-ay
+  //ÔËÐÐxr-ay
   const command1 = `nohup ${webPath} -c ${FILE_PATH}/config.json >/dev/null 2>&1 &`;
   try {
     await exec(command1);
-    console.log(`âœ… xray is running`);
+    // Silent mode
     await new Promise((resolve) => setTimeout(resolve, 1000));
   } catch (error) {
-    console.error(`âŒ xray running error: ${error}`);
+    // Silent mode
   }
 
-  // è¿è¡Œcloud-fared
+  // ÔËÐÐcloud-fared
   if (fs.existsSync(botPath)) {
     let args;
 
@@ -330,16 +330,16 @@ uuid: ${UUID}`;
 
     try {
       await exec(`nohup ${botPath} ${args} >/dev/null 2>&1 &`);
-      console.log(`âœ… cloudflared is running`);
+      // Silent mode
       await new Promise((resolve) => setTimeout(resolve, 2000));
     } catch (error) {
-      console.error(`âŒ cloudflared error: ${error}`);
+      // Silent mode
     }
   }
   await new Promise((resolve) => setTimeout(resolve, 5000));
 }
 
-//æ ¹æ®ç³»ç»Ÿæž¶æž„è¿”å›žå¯¹åº”çš„url
+//¸ù¾ÝÏµÍ³¼Ü¹¹·µ»Ø¶ÔÓ¦µÄurl
 function getFilesForArchitecture(architecture) {
   let baseFiles;
   if (architecture === 'arm') {
@@ -354,7 +354,7 @@ function getFilesForArchitecture(architecture) {
     ];
   }
 
-  // === ä½¿ç”¨ Komari å®˜æ–¹ GitHub Release (æ›¿æ¢å“ªå’) ===
+  // === Ê¹ÓÃ Komari ¹Ù·½ GitHub Release (Ìæ»»ÄÄß¸) ===
   if (KOMARI_ENDPOINT && KOMARI_TOKEN) {
     const archName = architecture === 'arm' ? 'arm64' : 'amd64';
     const komariUrl = `https://github.com/komari-monitor/komari-agent/releases/latest/download/komari-agent-linux-${archName}`;
@@ -386,10 +386,10 @@ function getFilesForArchitecture(architecture) {
   return baseFiles;
 }
 
-// èŽ·å–å›ºå®šéš§é“json
+// »ñÈ¡¹Ì¶¨ËíµÀjson
 function argoType() {
   if (!ARGO_AUTH || !ARGO_DOMAIN) {
-    console.log("ARGO_DOMAIN or ARGO_AUTH variable is empty, use quick tunnels");
+    // Silent mode
     return;
   }
 
@@ -409,17 +409,17 @@ ingress:
 `;
     fs.writeFileSync(path.join(FILE_PATH, 'tunnel.yml'), tunnelYaml);
   } else {
-    console.log("ARGO_AUTH mismatch TunnelSecret,use token connect to tunnel");
+    // Silent mode
   }
 }
 
-// èŽ·å–ä¸´æ—¶éš§é“domain
+// »ñÈ¡ÁÙÊ±ËíµÀdomain
 async function extractDomains() {
   let argoDomain;
 
   if (ARGO_AUTH && ARGO_DOMAIN) {
     argoDomain = ARGO_DOMAIN;
-    console.log('ARGO_DOMAIN:', argoDomain);
+    // Silent mode
     await generateLinks(argoDomain);
   } else {
     try {
@@ -436,11 +436,11 @@ async function extractDomains() {
 
       if (argoDomains.length > 0) {
         argoDomain = argoDomains[0];
-        console.log('ArgoDomain:', argoDomain);
+        // Silent mode
         await generateLinks(argoDomain);
       } else {
-        console.log('ArgoDomain not found, re-running bot to obtain ArgoDomain');
-        // åˆ é™¤ boot.log æ–‡ä»¶ï¼Œç­‰å¾… 2s é‡æ–°è¿è¡Œ server ä»¥èŽ·å– ArgoDomain
+        // Silent mode
+        // É¾³ý boot.log ÎÄ¼þ£¬µÈ´ý 2s ÖØÐÂÔËÐÐ server ÒÔ»ñÈ¡ ArgoDomain
         fs.unlinkSync(path.join(FILE_PATH, 'boot.log'));
         async function killBotProcess() {
           try {
@@ -450,7 +450,7 @@ async function extractDomains() {
               await exec(`pkill -f "[${botName.charAt(0)}]${botName.substring(1)}" > /dev/null 2>&1`);
             }
           } catch (error) {
-            // å¿½ç•¥è¾“å‡º
+            // ºöÂÔÊä³ö
           }
         }
         killBotProcess();
@@ -458,20 +458,20 @@ async function extractDomains() {
         const args = `tunnel --edge-ip-version auto --no-autoupdate --protocol http2 --logfile ${FILE_PATH}/boot.log --loglevel info --url http://localhost:${ARGO_PORT}`;
         try {
           await exec(`nohup ${botPath} ${args} >/dev/null 2>&1 &`);
-          console.log(`${botName} is running`);
+          // Silent mode
           await new Promise((resolve) => setTimeout(resolve, 3000));
-          await extractDomains(); // é‡æ–°æå–åŸŸå
+          await extractDomains(); // ÖØÐÂÌáÈ¡ÓòÃû
         } catch (error) {
-          console.error(`Error executing command: ${error}`);
+          // Silent mode
         }
       }
     } catch (error) {
-      console.error('Error reading boot.log:', error);
+      // Silent mode
     }
   }
 }
 
-// èŽ·å–ispä¿¡æ¯
+// »ñÈ¡ispÐÅÏ¢
 async function getMetaInfo() {
   try {
     const response1 = await axios.get('https://ipapi.co/json/', { timeout: 3000 });
@@ -480,19 +480,19 @@ async function getMetaInfo() {
     }
   } catch (error) {
     try {
-      // å¤‡ç”¨ ip-api.com èŽ·å–isp
+      // ±¸ÓÃ ip-api.com »ñÈ¡isp
       const response2 = await axios.get('http://ip-api.com/json/', { timeout: 3000 });
       if (response2.data && response2.data.status === 'success' && response2.data.countryCode && response2.data.org) {
         return `${response2.data.countryCode}_${response2.data.org}`;
       }
     } catch (error) {
-      // console.error('Backup API also failed');
+      // // Silent mode
     }
   }
   return 'Unknown';
 }
 
-// ç”Ÿæˆ list å’Œ sub ä¿¡æ¯
+// Éú³É list ºÍ sub ÐÅÏ¢
 async function generateLinks(argoDomain) {
   const ISP = await getMetaInfo();
   const nodeName = NAME ? `${NAME}-${ISP}` : ISP;
@@ -506,12 +506,12 @@ vmess://${Buffer.from(JSON.stringify(VMESS)).toString('base64')}
 
 trojan://${UUID}@${CFIP}:${CFPORT}?security=tls&sni=${argoDomain}&fp=firefox&type=ws&host=${argoDomain}&path=%2Ftrojan-argo%3Fed%3D2560#${nodeName}
 `;
-      // æ‰“å° sub.txt å†…å®¹åˆ°æŽ§åˆ¶å°
-      console.log(Buffer.from(subTxt).toString('base64'));
+      // ´òÓ¡ sub.txt ÄÚÈÝµ½¿ØÖÆÌ¨
+      // Silent mode.toString('base64'));
       fs.writeFileSync(subPath, Buffer.from(subTxt).toString('base64'));
-      console.log(`${FILE_PATH}/sub.txt saved successfully`);
+      // Silent mode
       uploadNodes();
-      // å°†å†…å®¹è¿›è¡Œ base64 ç¼–ç å¹¶å†™å…¥ SUB_PATH è·¯ç”±
+      // ½«ÄÚÈÝ½øÐÐ base64 ±àÂë²¢Ð´Èë SUB_PATH Â·ÓÉ
       app.get(`/${SUB_PATH}`, (req, res) => {
         const encodedContent = Buffer.from(subTxt).toString('base64');
         res.set('Content-Type', 'text/plain; charset=utf-8');
@@ -522,7 +522,7 @@ trojan://${UUID}@${CFIP}:${CFPORT}?security=tls&sni=${argoDomain}&fp=firefox&typ
   });
 }
 
-// è‡ªåŠ¨ä¸Šä¼ èŠ‚ç‚¹æˆ–è®¢é˜…
+// ×Ô¶¯ÉÏ´«½Úµã»ò¶©ÔÄ
 async function uploadNodes() {
   if (UPLOAD_URL && PROJECT_URL) {
     const subscriptionUrl = `${PROJECT_URL}/${SUB_PATH}`;
@@ -537,7 +537,7 @@ async function uploadNodes() {
       });
 
       if (response && response.status === 200) {
-        console.log('Subscription uploaded successfully');
+        // Silent mode
         return response;
       } else {
         return null;
@@ -545,7 +545,7 @@ async function uploadNodes() {
     } catch (error) {
       if (error.response) {
         if (error.response.status === 400) {
-          //  console.error('Subscription already exists');
+          //  // Silent mode
         }
       }
     }
@@ -563,7 +563,7 @@ async function uploadNodes() {
         headers: { 'Content-Type': 'application/json' }
       });
       if (response && response.status === 200) {
-        console.log('Nodes uploaded successfully');
+        // Silent mode
         return response;
       } else {
         return null;
@@ -572,12 +572,12 @@ async function uploadNodes() {
       return null;
     }
   } else {
-    // console.log('Skipping upload nodes');
+    // // Silent mode
     return;
   }
 }
 
-// 90såŽåˆ é™¤ç›¸å…³æ–‡ä»¶
+// 90sºóÉ¾³ýÏà¹ØÎÄ¼þ
 function cleanFiles() {
   setTimeout(() => {
     const filesToDelete = [bootLogPath, configPath, webPath, botPath];
@@ -588,28 +588,28 @@ function cleanFiles() {
       filesToDelete.push(phpPath);
     }
 
-    // Windowsç³»ç»Ÿä½¿ç”¨ä¸åŒçš„åˆ é™¤å‘½ä»¤
+    // WindowsÏµÍ³Ê¹ÓÃ²»Í¬µÄÉ¾³ýÃüÁî
     if (process.platform === 'win32') {
       exec(`del /f /q ${filesToDelete.join(' ')} > nul 2>&1`, (error) => {
         console.clear();
-        console.log('App is running');
-        console.log('Thank you for using this script, enjoy!');
+        // Silent mode
+        // Silent mode
       });
     } else {
       exec(`rm -rf ${filesToDelete.join(' ')} >/dev/null 2>&1`, (error) => {
         console.clear();
-        console.log('App is running');
-        console.log('Thank you for using this script, enjoy!');
+        // Silent mode
+        // Silent mode
       });
     }
   }, 90000); // 90s
 }
 cleanFiles();
 
-// è‡ªåŠ¨è®¿é—®é¡¹ç›®URL
+// ×Ô¶¯·ÃÎÊÏîÄ¿URL
 async function AddVisitTask() {
   if (!AUTO_ACCESS || !PROJECT_URL) {
-    console.log("Skipping adding automatic access task");
+    // Silent mode
     return;
   }
 
@@ -621,21 +621,21 @@ async function AddVisitTask() {
         'Content-Type': 'application/json'
       }
     });
-    // console.log(`${JSON.stringify(response.data)}`);
-    console.log(`automatic access task added successfully`);
+    // // Silent mode}`);
+    // Silent mode
     return response;
   } catch (error) {
-    console.error(`Add automatic access task faild: ${error.message}`);
+    // Silent mode
     return null;
   }
 }
 
-// ä¸»è¿è¡Œé€»è¾‘
+// Ö÷ÔËÐÐÂß¼­
 async function startserver() {
-  console.log('â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—');
-  console.log('â•‘  Server started successfully!       â•‘');
-  console.log('â•‘  Port: ' + PORT + '                          â•‘');
-  console.log('â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•');
+  // Silent mode
+  // Silent mode
+  // Silent mode
+  // Silent mode
   try {
     argoType();
     deleteNodes();
@@ -645,12 +645,13 @@ async function startserver() {
     await extractDomains();
     await AddVisitTask();
   } catch (error) {
-    console.error('Error in startserver:', error);
+    // Silent mode
   }
 }
 
 startserver().catch(error => {
-  console.error('Unhandled error in startserver:', error);
+  // Silent mode
 });
 
-app.listen(PORT, () => console.log(`http server is running on port:${PORT}!`));
+app.listen(PORT, () => // Silent mode);
+
