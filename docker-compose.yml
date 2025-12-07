@@ -11,7 +11,7 @@ services:
       PORT: 3000
       ARGO_PORT: 8001
       FILE_PATH: ./tmp
-      SUB_PATH: 778899
+      SUB_PATH: ${SUB_PATH:-sub}
       UUID: ${UUID:-}
       CFIP: ${CFIP:-cdns.doon.eu.org}
       CFPORT: ${CFPORT:-443}
