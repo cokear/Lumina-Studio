@@ -126,6 +126,21 @@ app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// 订阅路由 - 始终可用，从文件读取或返回空
+app.get(`/${SUB_PATH}`, (req, res) => {
+  try {
+    if (fs.existsSync(subPath)) {
+      const content = fs.readFileSync(subPath, 'utf-8');
+      res.set('Content-Type', 'text/plain; charset=utf-8');
+      res.send(content);
+    } else {
+      res.status(503).send('Subscription not ready yet, please wait...');
+    }
+  } catch (error) {
+    res.status(500).send('Error reading subscription');
+  }
+});
+
 // 生成xr-ay配置文件
 async function generateConfig() {
   const config = {
