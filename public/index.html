@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Loading Animation -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <div class="container">
+        <!-- Welcome Area -->
+        <div class="welcome-area">
+            <h1 class="greeting" id="greeting">Good Evening</h1>
+            <div class="clock" id="clock">23:25</div>
+        </div>
+
+        <!-- Integrated Search Area -->
+        <div class="search-wrapper">
+            <form id="search-form" action="https://www.google.com/search" method="get" target="_blank">
+                <div class="search-box">
+                    <div class="search-tabs">
+                        <span class="tab active" data-engine="google">Google</span>
+                        <span class="tab" data-engine="baidu">Baidu</span>
+                        <span class="tab" data-engine="bing">Bing</span>
+                        <span class="tab" data-engine="github">GitHub</span>
+                    </div>
+                    <div class="search-input-group">
+                        <input type="text" name="q" id="search-input" placeholder="Google search..." autocomplete="off">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Main Grid Content -->
+        <main class="grid-container">
+            <!-- Row 1 -->
+            <a href="https://www.baidu.com" target="_blank" class="app-card">
+                <div class="app-icon"><i class="fas fa-paw"></i></div>
+                <span class="app-name">Baidu</span>
+            </a>
+            <a href="https://www.youtube.com" target="_blank" class="app-card">
+                <div class="app-icon" style="color: #ff0000;"><i class="fab fa-youtube"></i></div>
+                <span class="app-name">YouTube</span>
+            </a>
+            <a href="https://mail.google.com" target="_blank" class="app-card">
+                <div class="app-icon" style="color: #ea4335;"><i class="fas fa-envelope"></i></div>
+                <span class="app-name">Gmail</span>
+            </a>
+            <a href="https://github.com" target="_blank" class="app-card">
+                <div class="app-icon"><i class="fab fa-github"></i></div>
+                <span class="app-name">GitHub</span>
+            </a>
+            <a href="https://www.cloudflare.com" target="_blank" class="app-card">
+                <div class="app-icon" style="color: #f48120;"><i class="fas fa-cloud"></i></div>
+                <span class="app-name">Cloudflare</span>
+            </a>
+            <a href="https://chatgpt.com" target="_blank" class="app-card">
+                <div class="app-icon" style="color: #10a37f;"><i class="fas fa-robot"></i></div>
+                <span class="app-name">ChatGPT</span>
+            </a>
+
+            <!-- Row 2 -->
+            <a href="https://huggingface.co" target="_blank" class="app-card">
+                <div class="app-icon" style="color: #ffd700;"><i class="fas fa-smile"></i></div>
+                <span class="app-name">HuggingFace</span>
+            </a>
+            <a href="https://twitter.com" target="_blank" class="app-card">
+                <div class="app-icon" style="color: #1da1f2;"><i class="fab fa-twitter"></i></div>
+                <span class="app-name">Twitter</span>
+            </a>
+            <a href="https://web.telegram.org" target="_blank" class="app-card">
+                <div class="app-icon" style="color: #229ed9;"><i class="fab fa-telegram"></i></div>
+                <span class="app-name">Telegram</span>
+            </a>
+            <a href="https://www.reddit.com" target="_blank" class="app-card">
+                <div class="app-icon" style="color: #ff4500;"><i class="fab fa-reddit"></i></div>
+                <span class="app-name">Reddit</span>
+            </a>
+            <a href="https://www.netflix.com" target="_blank" class="app-card">
+                <div class="app-icon" style="color: #e50914;"><i class="fas fa-play"></i></div>
+                <span class="app-name">Netflix</span>
+            </a>
+            <a href="https://open.spotify.com" target="_blank" class="app-card">
+                <div class="app-icon" style="color: #1db954;"><i class="fab fa-spotify"></i></div>
+                <span class="app-name">Spotify</span>
+            </a>
+
+            <!-- Row 3 -->
+            <a href="https://stackoverflow.com" target="_blank" class="app-card">
+                <div class="app-icon" style="color: #f48024;"><i class="fab fa-stack-overflow"></i></div>
+                <span class="app-name">StackOverflow</span>
+            </a>
+            <a href="https://www.amazon.com" target="_blank" class="app-card">
+                <div class="app-icon" style="color: #ff9900;"><i class="fab fa-amazon"></i></div>
+                <span class="app-name">Amazon</span>
+            </a>
+            <a href="https://translate.google.com" target="_blank" class="app-card">
+                <div class="app-icon" style="color: #4285f4;"><i class="fas fa-language"></i></div>
+                <span class="app-name">Translate</span>
+            </a>
+            <a href="https://www.google.com/maps" target="_blank" class="app-card">
+                <div class="app-icon" style="color: #34a853;"><i class="fas fa-map-marked-alt"></i></div>
+                <span class="app-name">Maps</span>
+            </a>
+            <a href="https://www.speedtest.net" target="_blank" class="app-card">
+                <div class="app-icon" style="color: #14b8a6;"><i class="fas fa-tachometer-alt"></i></div>
+                <span class="app-name">Speedtest</span>
+            </a>
+            <a href="https://www.wikipedia.org" target="_blank" class="app-card">
+                <div class="app-icon" style="color: #ffffff;"><i class="fab fa-wikipedia-w"></i></div>
+                <span class="app-name">Wikipedia</span>
+            </a>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
