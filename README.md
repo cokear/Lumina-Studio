@@ -2,6 +2,18 @@
 
 🎨 一个伪装成高端数字设计工作室的个人仪表盘/代理服务。
 
+## 🙏 致谢
+
+> **本项目基于 [eooce/nodejs-argo](https://github.com/eooce/nodejs-argo) 进行适当修改和功能扩展。**  
+> **特别感谢原作者 [@eooce](https://github.com/eooce) 提供的优秀基础框架！**
+
+**主要修改内容：**
+- 🎨 替换为 Lumina Studio 伪装主题
+- 🔕 静默运行模式（无日志输出）
+- 📊 集成 Komari 监控支持
+- 🔧 零配置部署（UUID 默认值）
+- 🌐 多架构支持（amd64/arm64）
+
 ## ✨ 功能特性
 
 - **Lumina Studio 主题**：创意散乱布局，3D 倾斜交互，Unsplash 艺术图片
@@ -89,18 +101,7 @@ docker build -t lumina-studio:latest .
 
 GPL-3.0 License
 
-## 🙏 致谢
-
-本项目基于 [eooce/nodejs-argo](https://github.com/eooce/nodejs-argo) 进行适当修改和功能扩展。
-
-**特别感谢原作者 [@eooce](https://github.com/eooce)** 提供的优秀基础框架！
-
-**主要修改内容：**
-- 🎨 替换为 Lumina Studio 伪装主题
-- 🔕 静默运行模式（无日志输出）
-- 📊 集成 Komari 监控支持
-- 🔧 零配置部署（UUID 默认值）
-- 🌐 多架构支持（amd64/arm64）
+---
 
 **其他致谢：**
 - [Komari Monitor](https://github.com/komari-monitor) - 轻量级监控系统
