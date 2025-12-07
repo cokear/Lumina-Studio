@@ -1,13 +1,14 @@
-# Nav Dashboard
+# Lumina Studio
 
-🎯 一个集成了导航页面、代理服务和监控的Docker应用。
+🎨 一个伪装成高端数字设计工作室的个人仪表盘/代理服务。
 
 ## ✨ 功能特性
 
-- **导航页面**：精美的Dashboard，包含搜索功能和常用网站快捷方式
-- **代理服务**：VLESS/VMess/Trojan协议支持，Cloudflare隧道集成
-- **Komari监控**：替代哪吒的轻量级监控方案
-- **节点订阅**：自动生成订阅链接，节点命名使用IP国家代码
+- **Lumina Studio 主题**：创意散乱布局，3D 倾斜交互，Unsplash 艺术图片
+- **详情页系统**：点击卡片进入沉浸式项目详情页
+- **代理服务**：VLESS/VMess/Trojan 协议支持，Cloudflare 隧道集成
+- **Komari 监控**：集成轻量级监控探针
+- **完美伪装**：无任何敏感字眼，看起来就是个设计师作品集
 
 ## 🚀 快速开始
 
@@ -20,55 +21,30 @@ cp .env.example .env
 ```
 
 **必填项：**
-- `UUID`: 代理服务UUID（使用在线UUID生成器）
+- `UUID`: 代理服务UUID
 - `KOMARI_ENDPOINT`: Komari监控端点
 - `KOMARI_TOKEN`: Komari访问令牌
 
-**可选项：**
-- `ARGO_DOMAIN` / `ARGO_AUTH`: Cloudflare固定隧道配置
-- `NAME`: 节点名称前缀
-
-### 2. 构建并运行
-
-```bash
-# 构建镜像
-docker build -t nav-dashboard:latest .
-
-# 启动服务
-docker-compose up -d
-
-# 查看日志
-docker-compose logs -f
-```
-
-### 3. 访问服务
-
-- **导航页面**：http://localhost:3000
-- **订阅地址**：http://localhost:3000/[SUB_PATH]
-
-## 📦 Docker镜像
-
-### 使用预构建镜像 (GHCR)
-
-无需构建，直接使用 GitHub Container Registry 上的镜像：
+### 2. 使用预构建镜像 (GHCR)
 
 ```bash
 docker run -d \
-  --name nav-dashboard \
+  --name lumina-studio \
+  --restart always \
   -p 3000:3000 \
   -e UUID="您的UUID" \
   -e KOMARI_ENDPOINT="您的Komari地址" \
   -e KOMARI_TOKEN="您的Komari令牌" \
-  ghcr.io/debbide/nav-dashboard:latest
+  ghcr.io/debbide/lumina-studio:latest
 ```
 
 或者使用 Docker Compose：
 
 ```yaml
 services:
-  nav-dashboard:
-    image: ghcr.io/debbide/nav-dashboard:latest
-    container_name: nav-dashboard
+  lumina-studio:
+    image: ghcr.io/debbide/lumina-studio:latest
+    container_name: lumina-studio
     restart: always
     ports:
       - "3000:3000"
@@ -76,6 +52,12 @@ services:
       - UUID=your-uuid
       - KOMARI_ENDPOINT=https://km.example.com
       - KOMARI_TOKEN=your-token
+```
+
+### 3. 手动构建
+
+```bash
+docker build -t lumina-studio:latest .
 ```
 
 ## 🛠️ 配置说明
