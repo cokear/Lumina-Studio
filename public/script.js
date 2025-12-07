@@ -1,208 +1,48 @@
-// ============================================
-// 1. INITIALIZATION & DOM READY
-// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+    // 3D Tilt Effect for Cards
+    const cards = document.querySelectorAll('.tilt');
 
-document.addEventListener('DOMContentLoaded', function () {
-    initializeApp();
-});
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
 
-function initializeApp() {
-    // Hide loading screen after a short delay
-    setTimeout(() => {
-        const loadingScreen = document.getElementById('loading-screen');
-        if (loadingScreen) {
-            loadingScreen.classList.add('hidden');
-        }
-    }, 800);
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
 
-    // Initialize all features
-    initializeClock();
-    initializeGreeting();
-    initializeSearchEngine();
-    initializeKeyboardShortcuts();
-}
+            const rotateX = ((y - centerY) / centerY) * -10; // Max 10deg rotation
+            const rotateY = ((x - centerX) / centerX) * 10;
 
-// ============================================
-// 2. CLOCK & GREETING
-// ============================================
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+        });
 
-function initializeClock() {
-    const clockElement = document.getElementById('clock');
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+        });
 
-    function updateClock() {
-        const now = new Date();
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-
-        if (clockElement) {
-            clockElement.textContent = `${hours}:${minutes}:${seconds}`;
-        }
-    }
-
-    // Update immediately and then every second
-    updateClock();
-    setInterval(updateClock, 1000);
-}
-
-function initializeGreeting() {
-    const greetingElement = document.getElementById('greeting');
-    const hour = new Date().getHours();
-
-    let greeting;
-    if (hour < 12) {
-        greeting = 'Good Morning';
-    } else if (hour < 18) {
-        greeting = 'Good Afternoon';
-    } else {
-        greeting = 'Good Evening';
-    }
-
-    if (greetingElement) {
-        greetingElement.textContent = greeting;
-    }
-}
-
-// ============================================
-// 3. SEARCH ENGINE SWITCHING
-// ============================================
-
-const searchForm = document.getElementById('search-form');
-const searchInput = document.getElementById('search-input');
-const tabs = document.querySelectorAll('.tab');
-
-const engines = {
-    google: {
-        action: 'https://www.google.com/search',
-        placeholder: 'Google search...',
-        name: 'q'
-    },
-    baidu: {
-        action: 'https://www.baidu.com/s',
-        placeholder: 'Baidu search...',
-        name: 'wd'
-    },
-    bing: {
-        action: 'https://www.bing.com/search',
-        placeholder: 'Bing search...',
-        name: 'q'
-    },
-    github: {
-        action: 'https://github.com/search',
-        placeholder: 'GitHub search...',
-        name: 'q'
-    }
-};
-
-function initializeSearchEngine() {
-    tabs.forEach((tab, index) => {
-        tab.addEventListener('click', () => switchSearchEngine(tab));
-
-        // Number key shortcuts (1-4)
-        document.addEventListener('keydown', (e) => {
-            const num = parseInt(e.key);
-            if (num >= 1 && num <= 4 && !isInputFocused()) {
-                e.preventDefault();
-                tabs[num - 1].click();
-            }
+        // Simple click interaction
+        card.addEventListener('click', () => {
+            const title = card.getAttribute('data-title');
+            console.log(`Viewing project: ${title}`);
+            // Here you could add a modal or navigation logic
         });
     });
-}
 
-function switchSearchEngine(tab) {
-    // Remove active class from all tabs
-    tabs.forEach(t => t.classList.remove('active'));
+    // Smooth Scroll for Explore Button
+    const exploreBtn = document.querySelector('.explore-btn');
+    const gallerySection = document.querySelector('.gallery');
 
-    // Add active class to clicked tab
-    tab.classList.add('active');
+    if (exploreBtn && gallerySection) {
+        exploreBtn.addEventListener('click', () => {
+            gallerySection.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
 
-    // Update form action and input placeholder
-    const engineKey = tab.dataset.engine;
-    const engine = engines[engineKey];
-
-    searchForm.action = engine.action;
-    searchInput.placeholder = engine.placeholder;
-    searchInput.name = engine.name;
-
-    searchInput.focus();
-}
-
-// ============================================
-// 4. KEYBOARD SHORTCUTS
-// ============================================
-
-function initializeKeyboardShortcuts() {
-    document.addEventListener('keydown', (e) => {
-        // "/" - Focus search input
-        if (e.key === '/' && !isInputFocused()) {
-            e.preventDefault();
-            searchInput.focus();
-            searchInput.select();
-        }
-
-        // "Escape" - Clear search and blur
-        if (e.key === 'Escape') {
-            if (isInputFocused()) {
-                searchInput.value = '';
-                searchInput.blur();
-            }
-        }
-    });
-}
-
-function isInputFocused() {
-    return document.activeElement === searchInput;
-}
-
-// ============================================
-// 5. TOAST NOTIFICATIONS
-// ============================================
-
-function showToast(message, duration = 3000) {
-    const toast = document.getElementById('toast');
-
-    if (!toast) return;
-
-    toast.textContent = message;
-    toast.classList.add('show');
-
-    setTimeout(() => {
-        toast.classList.remove('show');
-    }, duration);
-}
-
-function showWelcomeToast() {
-    setTimeout(() => {
-        showToast('💡 Tip: Press "/" to search, Esc to clear', 4000);
-    }, 2000);
-}
-
-// ============================================
-// 6. SMOOTH ANIMATIONS & EFFECTS
-// ============================================
-
-// Smooth scroll behavior
-document.documentElement.style.scrollBehavior = 'smooth';
-
-// Add stagger animation to app cards
-const appCards = document.querySelectorAll('.app-card');
-appCards.forEach((card, index) => {
-    card.style.animationDelay = `${0.9 + (index * 0.03)}s`;
+    // Console Signature
+    console.log(
+        "%c Lumina Studio %c \nCreative Digital Experiences",
+        "background: #1e293b; color: #fff; padding: 4px 8px; border-radius: 4px; font-weight: bold;",
+        "color: #64748b; font-size: 12px;"
+    );
 });
-
-// ============================================
-// 7. SECRET CONSOLE LOG (Preserved)
-// ============================================
-
-console.log("%c Looking for something? Try fetching '/api/config'", "color: #00E5FF; font-size: 12px;");
-
-// ============================================
-// 8. PERFORMANCE OPTIMIZATION
-// ============================================
-
-// Preload Font Awesome icons
-const iconPreload = document.createElement('link');
-iconPreload.rel = 'preload';
-iconPreload.as = 'style';
-iconPreload.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
-document.head.appendChild(iconPreload);

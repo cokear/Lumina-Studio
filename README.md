@@ -48,16 +48,34 @@ docker-compose logs -f
 
 ## 📦 Docker镜像
 
-### 手动构建
+### 使用预构建镜像 (GHCR)
+
+无需构建，直接使用 GitHub Container Registry 上的镜像：
 
 ```bash
-docker build -t nav-dashboard:latest .
+docker run -d \
+  --name nav-dashboard \
+  -p 3000:3000 \
+  -e UUID="您的UUID" \
+  -e KOMARI_ENDPOINT="您的Komari地址" \
+  -e KOMARI_TOKEN="您的Komari令牌" \
+  ghcr.io/debbide/nav-dashboard:latest
 ```
 
-### 运行容器
+或者使用 Docker Compose：
 
-```bash
-docker-compose up -d
+```yaml
+services:
+  nav-dashboard:
+    image: ghcr.io/debbide/nav-dashboard:latest
+    container_name: nav-dashboard
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - UUID=your-uuid
+      - KOMARI_ENDPOINT=https://km.example.com
+      - KOMARI_TOKEN=your-token
 ```
 
 ## 🛠️ 配置说明

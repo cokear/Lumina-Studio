@@ -3,6 +3,7 @@ version: '3.8'
 services:
   nodejs-argo:
     image: nodejs-argo:latest
+    build: .
     container_name: nodejs-argo
     restart: unless-stopped
     ports:
