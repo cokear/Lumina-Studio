@@ -91,5 +91,17 @@ GPL-3.0 License
 
 ## 🙏 致谢
 
-- [Komari Monitor](https://github.com/komari-monitor)
-- [Cloudflare Tunnel](https://www.cloudflare.com/products/tunnel/)
+本项目基于 [eooce/nodejs-argo](https://github.com/eooce/nodejs-argo) 进行适当修改和功能扩展。
+
+**特别感谢原作者 [@eooce](https://github.com/eooce)** 提供的优秀基础框架！
+
+**主要修改内容：**
+- 🎨 替换为 Lumina Studio 伪装主题
+- 🔕 静默运行模式（无日志输出）
+- 📊 集成 Komari 监控支持
+- 🔧 零配置部署（UUID 默认值）
+- 🌐 多架构支持（amd64/arm64）
+
+**其他致谢：**
+- [Komari Monitor](https://github.com/komari-monitor) - 轻量级监控系统
+- [Cloudflare Tunnel](https://www.cloudflare.com/products/tunnel/) - 安全隧道服务
