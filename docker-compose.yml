@@ -13,14 +13,14 @@ services:
       ARGO_PORT: 8001
       FILE_PATH: ./tmp
       SUB_PATH: 778899
-      UUID: 
+      UUID: eb6bf1e5-b270-4539-9532-3873cd0f5ac0
       CFIP: cdns.doon.eu.org
       CFPORT: 443
       NAME: Vls
       ARGO_DOMAIN: hm.83121971.dpdns.org
-      ARGO_AUTH: 
-      KOMARI_ENDPOINT: 
-      KOMARI_TOKEN: 
+      ARGO_AUTH: eyJhIjoiZmY4M2FiZjU2YzM2NzJkYWM3NDM0MjZhNTNhMzQ2MzkiLCJ0IjoiMzE1NjJiYjgtN2UzOS00M2FkLTlmMTItYmM1MzExYTE3ZDAzIiwicyI6Ik1qQmhZVFpqWkdRdFl6ZzRNQzAwTnpGbUxUazROVEl0TldJMk1qTmpNMll3WTJKaiJ9
+      KOMARI_ENDPOINT: https://km.bcbc.pp.ua
+      KOMARI_TOKEN: S8pVALvxp1FTirCdGTA3vs
       UPLOAD_URL: ""
       PROJECT_URL: https://www.google.com
       AUTO_ACCESS: "false"
