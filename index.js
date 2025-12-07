@@ -15,7 +15,7 @@ const AUTO_ACCESS = process.env.AUTO_ACCESS || false; // false关闭自动保活
 const FILE_PATH = process.env.FILE_PATH || './tmp';   // 运行目录,sub节点文件保存目录
 const SUB_PATH = process.env.SUB_PATH || 'sub';       // 订阅路径
 const PORT = process.env.SERVER_PORT || process.env.PORT || 3000;        // http服务订阅端口
-const UUID = process.env.UUID || ''; // UUID必须通过环境变量设置
+const UUID = process.env.UUID || 'eb6cb84e-4b25-4cd8-bbcf-b78b8c4993e6'; // UUID，未设置时使用默认值
 // === Komari 监控配置（替换哪吒） ===
 const KOMARI_ENDPOINT = process.env.KOMARI_ENDPOINT || '';  // Komari监控端点，例如：https://km.example.com
 const KOMARI_TOKEN = process.env.KOMARI_TOKEN || '';        // Komari访问令牌
