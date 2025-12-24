@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文章 - 墨迹</title>
+  <meta name="description" content="探索墨迹的文字世界，这里有技术分享、设计思考、读书笔记和生活感悟。">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="logo">墨迹</a>
+        <ul class="nav-links">
+          <li><a href="index.html">首页</a></li>
+          <li><a href="blog.html" class="active">文章</a></li>
+          <li><a href="about.html">关于</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1 class="fade-up">文章</h1>
+        <p class="fade-up">探索我的文字世界，这里有技术分享、设计思考、读书笔记和生活感悟。</p>
+      </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <div class="container">
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-category="all">全部</button>
+          <button class="filter-btn" data-category="随笔">随笔</button>
+          <button class="filter-btn" data-category="设计">设计</button>
+          <button class="filter-btn" data-category="生活">生活</button>
+          <button class="filter-btn" data-category="读书">读书</button>
+          <button class="filter-btn" data-category="摄影">摄影</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Posts Grid -->
+    <section class="section">
+      <div class="container">
+        <div class="posts-grid">
+          <article class="post-card fade-up" data-category="随笔">
+            <div class="post-image">
+              <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&auto=format&fit=crop&q=80" alt="在代码与诗意之间寻找平衡">
+            </div>
+            <div class="post-content">
+              <div class="post-meta">
+                <span class="category">随笔</span>
+                <span class="date">2024年12月20日</span>
+              </div>
+              <h3><a href="blog/post-1.html">在代码与诗意之间寻找平衡</a></h3>
+              <p>作为一名开发者，我常常思考技术与人文的关系。代码不仅仅是冰冷的逻辑，它也可以承载温度和美感。</p>
+              <div class="read-time">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>5分钟阅读</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="post-card fade-up" data-category="设计">
+            <div class="post-image">
+              <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80" alt="极简主义设计的哲学思考">
+            </div>
+            <div class="post-content">
+              <div class="post-meta">
+                <span class="category">设计</span>
+                <span class="date">2024年12月15日</span>
+              </div>
+              <h3><a href="blog/post-2.html">极简主义设计的哲学思考</a></h3>
+              <p>Less is more 不仅是一种设计理念，更是一种生活态度。探讨如何在设计中做减法。</p>
+              <div class="read-time">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>4分钟阅读</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="post-card fade-up" data-category="生活">
+            <div class="post-image">
+              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop&q=80" alt="独处时光：内心的对话">
+            </div>
+            <div class="post-content">
+              <div class="post-meta">
+                <span class="category">生活</span>
+                <span class="date">2024年12月10日</span>
+              </div>
+              <h3><a href="blog/post-3.html">独处时光：内心的对话</a></h3>
+              <p>在这个信息过载的时代，学会与自己独处变得尤为重要。分享一些在独处中获得的宁静与力量。</p>
+              <div class="read-time">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>3分钟阅读</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="post-card fade-up" data-category="读书">
+            <div class="post-image">
+              <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&auto=format&fit=crop&q=80" alt="读书笔记">
+            </div>
+            <div class="post-content">
+              <div class="post-meta">
+                <span class="category">读书</span>
+                <span class="date">2024年12月5日</span>
+              </div>
+              <h3><a href="blog/post-4.html">读书笔记：《禅与摩托车维修艺术》</a></h3>
+              <p>这本书带给我的不仅是关于技术与艺术的思考，更是一种看待世界的新视角。</p>
+              <div class="read-time">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>6分钟阅读</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="post-card fade-up" data-category="摄影">
+            <div class="post-image">
+              <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=800&auto=format&fit=crop&q=80" alt="摄影日记">
+            </div>
+            <div class="post-content">
+              <div class="post-meta">
+                <span class="category">摄影</span>
+                <span class="date">2024年12月1日</span>
+              </div>
+              <h3><a href="blog/post-5.html">摄影日记：光影的故事</a></h3>
+              <p>用镜头记录生活中的美好瞬间。分享最近的摄影作品以及背后的故事和思考。</p>
+              <div class="read-time">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>4分钟阅读</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3>墨迹</h3>
+          <p>记录生活，分享思考</p>
+        </div>
+        <div class="footer-social">
+          <a href="https://github.com" target="_blank" aria-label="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+          <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 墨迹. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
